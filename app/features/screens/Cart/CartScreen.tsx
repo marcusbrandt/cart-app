@@ -1,19 +1,23 @@
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import useCartScreen from './useCartScreen';
 import CartProduct from '../../components/CartProduct';
+import { Container, Title } from './styles';
 
 export const CartScreen = () => {
-  const { cart, handleRemoveFromCart } = useCartScreen();
+  const { cart, handleRemoveFromCart, totalAmount} = useCartScreen();
 
   if (!cart || cart.length === 0) {
     return (
-      <View style={{ alignSelf: 'center', alignItems: 'center' }}>
-        <Text>Carrinho vazio!</Text>
+      <View style={{ flex: 1, justifyContent: 'center' }}>
+        <Title style={{ alignSelf: 'center' }}>Carrinho vazio!</Title>
       </View>
     );
   }
+
+  const text = `Você tem ${cart.length} produto${cart.length > 1 ? 's' : ''} no carrinho`;
   return (
-    <View>
+    <Container>
+      <Title>{text}</Title>
       {cart.map((product) => (
         <CartProduct
           key={product.id}
@@ -21,6 +25,7 @@ export const CartScreen = () => {
           onClick={handleRemoveFromCart}
         />
       ))}
-    </View>
+      <Title>Total {totalAmount}</Title>
+    </Container>
   );
 };

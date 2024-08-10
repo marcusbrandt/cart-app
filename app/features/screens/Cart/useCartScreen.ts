@@ -12,6 +12,7 @@ const useCartScreen = () => {
 
   return {
     cart,
+    totalAmount: cart.reduce((acc, item) => acc + item.price, 0),
     handleRemoveFromCart,
   };
 };
