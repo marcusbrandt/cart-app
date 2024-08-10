@@ -1,7 +1,5 @@
-import { View } from "react-native";
-
-import ProductScreen from "@/src/screens/Products";
-
+import { View } from 'react-native';
+import ProductScreen from './features/screens/Products';
 
 export default function Index() {
   return (
@@ -10,7 +8,7 @@ export default function Index() {
         flex: 1,
       }}
     >
-        <ProductScreen />
+      <ProductScreen />
     </View>
   );
 }
