@@ -5,6 +5,11 @@ import { Product, Products } from '../../../types';
 import { addToCart, removeFromCart } from '../../../../store/cartSlice';
 import { useDispatchMock } from '../../../../../__tests__/__utils__/tools';
 import { refreshProducts } from '../../../../store/productsSlice';
+import * as test from '../../../services/products.service';
+
+jest.mock('../../../services/products.service');
+
+const useGetProductsQuery = test.useGetProductsQuery as jest.Mock;
 
 const initialState: Products & { cart: Product[] } = {
   products: [
@@ -34,6 +39,9 @@ describe('useProductScreen', () => {
     mockReactRedux()
       .state(initialState)
       .give((state) => state, initialState);
+    useGetProductsQuery.mockReturnValue({
+      refetch: jest.fn(),
+    });
     useDispatchMock(dispatchMock);
   });
 
@@ -59,8 +67,7 @@ describe('useProductScreen', () => {
       result.current.buttonAdd(3);
     });
 
-    expect(dispatchMock).toBeCalledTimes(1);
-    expect(dispatchMock).toBeCalledWith(refreshProducts([]));
+    expect(dispatchMock).toBeCalledTimes(0);
   });
 
   it('removes an item from the cart', () => {

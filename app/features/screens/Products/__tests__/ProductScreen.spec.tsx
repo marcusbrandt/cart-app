@@ -4,7 +4,7 @@ import { ProductScreen } from '../ProductScreen';
 import { render } from '../../../../../__tests__/__utils__/wrapperUtils';
 import * as useProductScreen from '../useProductScreen';
 
-const mockUseProductScreen = jest.spyOn(useProductScreen, 'default');
+const useProductScreenMock = jest.spyOn(useProductScreen, 'default');
 const buttonRemove = jest.fn();
 const buttonAdd = jest.fn();
 const mockProducts = [
@@ -27,17 +27,21 @@ const mockProducts = [
 describe('ProductScreen', () => {
   beforeEach(() => {
     jest.clearAllMocks();
-    mockUseProductScreen.mockReturnValue({
+    useProductScreenMock.mockReturnValue({
       products: mockProducts,
       buttonRemove,
       buttonAdd,
+      isLoading: false,
+      error: undefined,
     });
   });
   it('renders empty product list message when no products are available', () => {
-    mockUseProductScreen.mockReturnValue({
+    useProductScreenMock.mockReturnValue({
       products: [],
       buttonAdd,
       buttonRemove,
+      isLoading: false,
+      error: undefined,
     });
     const { getByText } = render(<ProductScreen />);
     expect(getByText('Não foi possível encontrar nenhum produto')).toBeTruthy();

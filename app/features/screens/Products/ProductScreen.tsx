@@ -4,12 +4,33 @@ import useProductScreen from './useProductScreen';
 import Product from '../../components/Product';
 
 export const ProductScreen = () => {
-  const { products, buttonAdd, buttonRemove } = useProductScreen();
+  const { products, buttonAdd, buttonRemove, isLoading, error } =
+    useProductScreen();
+
+  if (isLoading) {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center' }}>
+        <Text style={{ alignSelf: 'center' }}>Carregando...</Text>
+      </View>
+    );
+  }
+
+  if (error) {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center' }}>
+        <Text style={{ alignSelf: 'center' }}>
+          Ocorreu um erro ao carregar os produtos
+        </Text>
+      </View>
+    );
+  }
 
   if (!products || products.length === 0) {
     return (
-      <View style={{ alignSelf: 'center', alignItems: 'center' }}>
-        <Text>Não foi possível encontrar nenhum produto</Text>
+      <View style={{ flex: 1, justifyContent: 'center' }}>
+        <Text style={{ alignSelf: 'center' }}>
+          Não foi possível encontrar nenhum produto
+        </Text>
       </View>
     );
   }

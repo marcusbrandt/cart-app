@@ -1,30 +1,17 @@
 import { useEffect } from 'react';
 import { useProductScreenProps } from './types';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
-import { Product, Products } from '../../types';
-import { addProducts, refreshProducts } from '../../../store/productsSlice';
+import { Product } from '../../types';
+import { addProducts } from '../../../store/productsSlice';
 import { addToCart, removeFromCart } from '../../../store/cartSlice';
-import { fetchProducts } from '../../services/products.service';
+import { useGetProductsQuery } from '../../services/products.service';
 
 const useProductScreen: () => useProductScreenProps = () => {
   const dispatch = useAppDispatch();
 
   const products = useAppSelector((state) => state.products as Product[]);
   const cart = useAppSelector((state) => state.cart as Product[]);
-
-  useEffect(() => {
-    dispatch(refreshProducts([]));
-    fetchProducts()
-      .then((response) => response.json())
-      .then((data) =>
-        (data as Products).products.map((product) => ({
-          ...product,
-          cart: false,
-        })),
-      )
-      .then((data) => dispatch(addProducts(data)))
-      .catch((error) => console.error(error));
-  }, []);
+  const { data, error, isLoading } = useGetProductsQuery({});
 
   const buttonAdd = (id: number) => {
     const addProductCart = products.find((product) => product.id === id);
@@ -32,6 +19,12 @@ const useProductScreen: () => useProductScreenProps = () => {
       dispatch(addToCart(addProductCart));
     }
   };
+
+  useEffect(() => {
+    if (data) {
+      dispatch(addProducts(data.products));
+    }
+  }, [data]);
 
   const buttonRemove = (id: number) => {
     dispatch(removeFromCart(id));
@@ -48,6 +41,8 @@ const useProductScreen: () => useProductScreenProps = () => {
 
   return {
     products: productsWithCart,
+    error,
+    isLoading,
     buttonAdd,
     buttonRemove,
   };

@@ -16,7 +16,9 @@ export const Product = ({
   product,
   buttonAdd,
   buttonRemove,
-}: Omit<useProductScreenProps, 'products'> & { product: ProductType }) => {
+}: Omit<useProductScreenProps, 'products' | 'isLoading' | 'error'> & {
+  product: ProductType;
+}) => {
   return (
     <ProductContainer>
       <ProductImage
