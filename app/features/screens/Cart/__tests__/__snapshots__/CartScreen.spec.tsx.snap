@@ -1,0 +1,291 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CartScreen renders empty cart message when cart is empty 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+      "alignSelf": "center",
+    }
+  }
+>
+  <Text>
+    Carrinho vazio!
+  </Text>
+</View>
+`;
+
+exports[`CartScreen renders products in the cart 1`] = `
+<View>
+  <View
+    style={
+      {
+        "alignItems": "center",
+        "backgroundColor": "white",
+        "borderBottomLeftRadius": 8,
+        "borderBottomRightRadius": 8,
+        "borderTopLeftRadius": 8,
+        "borderTopRightRadius": 8,
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+        "marginBottom": 8,
+        "marginLeft": 0,
+        "marginRight": 0,
+        "marginTop": 8,
+        "paddingBottom": 16,
+        "paddingLeft": 16,
+        "paddingRight": 16,
+        "paddingTop": 16,
+        "shadowColor": "rgba(0, 0, 0, 0.1)",
+        "shadowOffset": {
+          "height": 4,
+          "width": 0,
+        },
+        "shadowOpacity": 1,
+        "shadowRadius": 8,
+      }
+    }
+  >
+    <Image
+      source={
+        {
+          "uri": "https://via.placeholder.com/100",
+        }
+      }
+      style={
+        {
+          "borderBottomLeftRadius": 8,
+          "borderBottomRightRadius": 8,
+          "borderTopLeftRadius": 8,
+          "borderTopRightRadius": 8,
+          "height": 100,
+          "objectFit": "cover",
+          "width": 100,
+        }
+      }
+      testID="cart-product-image-1"
+    />
+    <Text
+      style={
+        {
+          "color": "black",
+          "fontSize": 18,
+          "fontWeight": "bold",
+        }
+      }
+      testID="cart-product-title-1"
+    >
+      Product 1
+    </Text>
+    <Text
+      style={
+        {
+          "color": "black",
+          "fontSize": 16,
+          "fontWeight": "bold",
+        }
+      }
+      testID="cart-product-price-1"
+    >
+      10
+    </Text>
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "alignItems": "center",
+          "backgroundColor": "blue",
+          "borderBottomLeftRadius": 8,
+          "borderBottomRightRadius": 8,
+          "borderTopLeftRadius": 8,
+          "borderTopRightRadius": 8,
+          "display": "flex",
+          "justifyContent": "center",
+          "opacity": 1,
+          "paddingBottom": 8,
+          "paddingLeft": 8,
+          "paddingRight": 8,
+          "paddingTop": 8,
+        }
+      }
+      testID="cart-product-remove-button-1"
+    >
+      <Image
+        source={
+          {
+            "uri": "https://via.placeholder.com/24",
+          }
+        }
+        style={
+          {
+            "height": 24,
+            "width": 24,
+          }
+        }
+        testID="cart-product-remove-button-image-1"
+      />
+    </View>
+  </View>
+  <View
+    style={
+      {
+        "alignItems": "center",
+        "backgroundColor": "white",
+        "borderBottomLeftRadius": 8,
+        "borderBottomRightRadius": 8,
+        "borderTopLeftRadius": 8,
+        "borderTopRightRadius": 8,
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+        "marginBottom": 8,
+        "marginLeft": 0,
+        "marginRight": 0,
+        "marginTop": 8,
+        "paddingBottom": 16,
+        "paddingLeft": 16,
+        "paddingRight": 16,
+        "paddingTop": 16,
+        "shadowColor": "rgba(0, 0, 0, 0.1)",
+        "shadowOffset": {
+          "height": 4,
+          "width": 0,
+        },
+        "shadowOpacity": 1,
+        "shadowRadius": 8,
+      }
+    }
+  >
+    <Image
+      source={
+        {
+          "uri": "https://via.placeholder.com/100",
+        }
+      }
+      style={
+        {
+          "borderBottomLeftRadius": 8,
+          "borderBottomRightRadius": 8,
+          "borderTopLeftRadius": 8,
+          "borderTopRightRadius": 8,
+          "height": 100,
+          "objectFit": "cover",
+          "width": 100,
+        }
+      }
+      testID="cart-product-image-2"
+    />
+    <Text
+      style={
+        {
+          "color": "black",
+          "fontSize": 18,
+          "fontWeight": "bold",
+        }
+      }
+      testID="cart-product-title-2"
+    >
+      Product 2
+    </Text>
+    <Text
+      style={
+        {
+          "color": "black",
+          "fontSize": 16,
+          "fontWeight": "bold",
+        }
+      }
+      testID="cart-product-price-2"
+    >
+      20
+    </Text>
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "alignItems": "center",
+          "backgroundColor": "blue",
+          "borderBottomLeftRadius": 8,
+          "borderBottomRightRadius": 8,
+          "borderTopLeftRadius": 8,
+          "borderTopRightRadius": 8,
+          "display": "flex",
+          "justifyContent": "center",
+          "opacity": 1,
+          "paddingBottom": 8,
+          "paddingLeft": 8,
+          "paddingRight": 8,
+          "paddingTop": 8,
+        }
+      }
+      testID="cart-product-remove-button-2"
+    >
+      <Image
+        source={
+          {
+            "uri": "https://via.placeholder.com/24",
+          }
+        }
+        style={
+          {
+            "height": 24,
+            "width": 24,
+          }
+        }
+        testID="cart-product-remove-button-image-2"
+      />
+    </View>
+  </View>
+</View>
+`;
