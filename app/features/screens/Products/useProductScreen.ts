@@ -21,7 +21,7 @@ const useProductScreen: () => useProductScreenProps = () => {
   };
 
   useEffect(() => {
-    if (data) {
+    if (data?.products) {
       dispatch(addProducts(data.products));
     }
   }, [data]);

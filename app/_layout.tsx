@@ -1,10 +1,12 @@
 import { Stack, Link } from 'expo-router';
 import { DefaultTheme, ThemeProvider } from 'styled-components';
 import React from 'react';
-import { Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import { HeaderButtonProps } from '@react-navigation/elements';
 import { Provider } from 'react-redux';
 import { store } from './store';
+import { AntDesign } from '@expo/vector-icons';
+import BadgeIcon from './features/components/BadgeIcon';
 
 const theme: DefaultTheme = {
   colors: {
@@ -16,26 +18,12 @@ const theme: DefaultTheme = {
   },
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  image: {
-    width: 50,
-    height: 50,
-  },
-});
-
 function LogoTitle(props: HeaderButtonProps) {
   return (
     <Link href={'/cart'} asChild>
       <TouchableOpacity {...props}>
-        <Image
-          style={styles.image}
-          source={{ uri: 'https://reactnative.dev/img/tiny_logo.png' }}
-        />
+        <AntDesign name="shoppingcart" size={32} color="black" />
+        <BadgeIcon />
       </TouchableOpacity>
     </Link>
   );

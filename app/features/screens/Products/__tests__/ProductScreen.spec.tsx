@@ -35,6 +35,33 @@ describe('ProductScreen', () => {
       error: undefined,
     });
   });
+
+  it('renders loading data message', () => {
+    useProductScreenMock.mockReturnValue({
+      products: [],
+      buttonAdd,
+      buttonRemove,
+      isLoading: true,
+      error: undefined,
+    });
+    const { getByText, toJSON } = render(<ProductScreen />);
+    expect(getByText('Carregando...')).toBeTruthy();
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('renders error message when an error occurs', () => {
+    useProductScreenMock.mockReturnValue({
+      products: [],
+      buttonAdd,
+      buttonRemove,
+      isLoading: false,
+      error: Error('Error'),
+    });
+    const { getByText, toJSON } = render(<ProductScreen />);
+    expect(getByText('Ocorreu um erro ao carregar os produtos')).toBeTruthy();
+    expect(toJSON()).toMatchSnapshot();
+  });
+
   it('renders empty product list message when no products are available', () => {
     useProductScreenMock.mockReturnValue({
       products: [],

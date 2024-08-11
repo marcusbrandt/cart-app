@@ -4,7 +4,7 @@ import useProductScreen from '../useProductScreen';
 import { Product, Products } from '../../../types';
 import { addToCart, removeFromCart } from '../../../../store/cartSlice';
 import { useDispatchMock } from '../../../../../__tests__/__utils__/tools';
-import { refreshProducts } from '../../../../store/productsSlice';
+import { addProducts, refreshProducts } from '../../../../store/productsSlice';
 import * as test from '../../../services/products.service';
 
 jest.mock('../../../services/products.service');
@@ -40,6 +40,9 @@ describe('useProductScreen', () => {
       .state(initialState)
       .give((state) => state, initialState);
     useGetProductsQuery.mockReturnValue({
+      data: { products: initialState.products },
+      isLoading: false,
+      error: undefined,
       refetch: jest.fn(),
     });
     useDispatchMock(dispatchMock);
@@ -48,6 +51,20 @@ describe('useProductScreen', () => {
   it('returns the products from the state', () => {
     const { result } = renderHook(() => useProductScreen());
     expect(result.current.products).toEqual(initialState.products);
+  });
+
+  it('returns empty data', () => {
+    mockReactRedux()
+      .state({ products: [] })
+      .give((state) => state, { products: [] });
+    useGetProductsQuery.mockReturnValue({
+      data: { products: undefined },
+      isLoading: false,
+      error: undefined,
+      refetch: jest.fn(),
+    });
+    const { result } = renderHook(() => useProductScreen());
+    expect(result.current.products).toEqual([]);
   });
 
   it('adds an item to the cart', () => {
@@ -67,7 +84,8 @@ describe('useProductScreen', () => {
       result.current.buttonAdd(3);
     });
 
-    expect(dispatchMock).toBeCalledTimes(0);
+    expect(dispatchMock).toBeCalledTimes(1);
+    expect(dispatchMock).toBeCalledWith(addProducts(initialState.products));
   });
 
   it('removes an item from the cart', () => {
@@ -78,5 +96,19 @@ describe('useProductScreen', () => {
     });
 
     expect(dispatchMock).toBeCalledWith(removeFromCart(1));
+  });
+
+  it('should return products in cart', () => {
+    mockReactRedux()
+      .state({
+        products: initialState.products,
+        cart: [initialState.products[0]],
+      })
+      .give((state) => state, {
+        products: initialState.products,
+        cart: [initialState.products[0]],
+      });
+    const { result } = renderHook(() => useProductScreen());
+    expect(result.current.products[0].cart).toBeTruthy();
   });
 });
