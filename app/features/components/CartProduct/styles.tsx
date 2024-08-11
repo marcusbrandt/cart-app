@@ -36,10 +36,5 @@ export const CartProductRemoveButton = styled.TouchableOpacity`
   justify-content: center;
   padding: 8px;
   border-radius: 8px;
-  background-color: ${({ theme }) => theme.colors.primary};
-`;
-
-export const CartProductRemoveButtonImage = styled.Image`
-  width: 24px;
-  height: 24px;
+  background-color: ${({ theme }) => theme.colors.buttonText};
 `;

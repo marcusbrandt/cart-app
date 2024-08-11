@@ -3,10 +3,10 @@ import {
   CartProductImage,
   CartProductPrice,
   CartProductRemoveButton,
-  CartProductRemoveButtonImage,
   CartProductTitle,
 } from './styles';
 import { Product } from '../../types';
+import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 
 export const CartProduct = ({
   product,
@@ -19,7 +19,7 @@ export const CartProduct = ({
     <CartProductContainer>
       <CartProductImage
         testID={`cart-product-image-${product.id}`}
-        source={{ uri: 'https://via.placeholder.com/100' }}
+        source={{ uri: product.image }}
       />
       <CartProductTitle testID={`cart-product-title-${product.id}`}>
         {product.name}
@@ -31,10 +31,7 @@ export const CartProduct = ({
         testID={`cart-product-remove-button-${product.id}`}
         onPress={() => onClick(product.id)}
       >
-        <CartProductRemoveButtonImage
-          testID={`cart-product-remove-button-image-${product.id}`}
-          source={{ uri: 'https://via.placeholder.com/24' }}
-        />
+        <FontAwesome5 name="minus" size={24} color="black" />
       </CartProductRemoveButton>
     </CartProductContainer>
   );
