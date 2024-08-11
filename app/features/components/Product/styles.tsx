@@ -24,6 +24,7 @@ export const ProductTitle = styled.Text`
   font-weight: bold;
   color: ${({ theme }) => theme.colors.text};
   margin-top: 24px;
+  text-align: center;
 `;
 
 export const ProductPrice = styled.Text`
