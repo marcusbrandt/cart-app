@@ -23,7 +23,7 @@ export const Product = ({
     <ProductContainer>
       <ProductImage
         testID={`product-image-${product.id}`}
-        source={{ uri: 'https://via.placeholder.com/100' }}
+        source={{ uri: product.image }}
       />
       <ProductTitle testID="product-title">{product.name}</ProductTitle>
       <ProductPrice testID="product-price">{product.price}</ProductPrice>
